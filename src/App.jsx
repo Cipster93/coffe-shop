@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
 import HomeView from './pages/HomeView'
 import MenuView from './pages/MenuView'
 import ContactView from './pages/ContactView'
@@ -9,6 +8,7 @@ import Lottie from 'lottie-react'
 import CoffeeAnimation from '../public/Coffee.json'
 import PageWrapper from './components/PageWrapper'
 import './App.css'
+import ScrollToTop from './utils/ScrollToTop'
 
 function AppContent() {
   const location = useLocation()
@@ -16,13 +16,11 @@ function AppContent() {
   return (
     <>
       <HeaderNavigation />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageWrapper><HomeView /></PageWrapper>} />
-          <Route path="/menu" element={<PageWrapper><MenuView /></PageWrapper>} />
-          <Route path="/contact" element={<PageWrapper><ContactView /></PageWrapper>} />
-        </Routes>
-      </AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageWrapper><HomeView /></PageWrapper>} />
+        <Route path="/menu" element={<PageWrapper><MenuView /></PageWrapper>} />
+        <Route path="/contact" element={<PageWrapper><ContactView /></PageWrapper>} />
+      </Routes>
     </>
   )
 }
@@ -43,7 +41,7 @@ function App() {
   if (isLoading) {
     return (
       <div className="loading-screen">
-        <Lottie 
+        <Lottie
           lottieRef={lottieRef}
           animationData={CoffeeAnimation}
           style={{ width: '100vw', height: '100vh', filter: 'invert(1) brightness(1.2)' }}
@@ -56,6 +54,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <AppContent />
     </Router>
   )

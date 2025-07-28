@@ -4,7 +4,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import "../styles/MenuSection.css";
+import ProductCard from "../components/Card";
+import menuData from "../data/products";
+import "../styles/MenuStyles/MenuSection.css";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -15,11 +17,12 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
+      className="menu-tab-panel"
       {...other}
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -39,7 +42,7 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs() {
+export default function MenuView() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -47,36 +50,61 @@ export default function VerticalTabs() {
   };
 
   return (
-      <Box className="menu-container">
-        <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs example"
-          className="menu-tabs"
-        >
-          <Tab label="Coffee Drinks" {...a11yProps(0)} />
-          <Tab label="Tea & Infusions" {...a11yProps(1)} />
-          <Tab label="Cold Drinks & Juices" {...a11yProps(2)} />
-          <Tab label="Cakes & Pastries" {...a11yProps(3)} />
-          <Tab label="Light Snacks / Breakfast" {...a11yProps(4)} />
-        </Tabs>
-        <TabPanel value={value} index={0}>
-          Coffee Drinks
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Tea & Infusions
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Cold Drinks & Juices
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          Cakes & Pastries
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-          Light Snacks / Breakfast
-        </TabPanel>
-      </Box>
+    <Box className="menu-container">
+      <Tabs
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Menu categories"
+        className="menu-tabs"
+      >
+        <Tab label="Coffee Drinks" {...a11yProps(0)} />
+        <Tab label="Tea & Infusions" {...a11yProps(1)} />
+        <Tab label="Cold Drinks & Juices" {...a11yProps(2)} />
+        <Tab label="Cakes & Pastries" {...a11yProps(3)} />
+        <Tab label="Light Snacks & Breakfast" {...a11yProps(4)} />
+      </Tabs>
+
+      <TabPanel value={value} index={0}>
+        <div className="products-grid">
+          {menuData.coffeeDrinks.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </div>
+      </TabPanel>
+
+      <TabPanel value={value} index={1}>
+        <div className="products-grid">
+          {menuData.teaInfusions.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </div>
+      </TabPanel>
+
+      <TabPanel value={value} index={2}>
+        <div className="products-grid">
+          {menuData.coldDrinks.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </div>
+      </TabPanel>
+
+      <TabPanel value={value} index={3}>
+        <div className="products-grid">
+          {menuData.cakesPastries.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </div>
+      </TabPanel>
+
+      <TabPanel value={value} index={4}>
+        <div className="products-grid">
+          {menuData.lightSnacks.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </div>
+      </TabPanel>
+    </Box>
   );
 }

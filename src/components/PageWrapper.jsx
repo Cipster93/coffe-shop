@@ -1,5 +1,5 @@
 // src/components/PageWrapper.jsx
-import { motion as Motion} from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 
 const pageVariants = {
   initial: { opacity: 0, y: 30 },

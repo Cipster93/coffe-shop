@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/Section1.css";
+import "../../styles/HomePageStyles/Section1.css"
 import AnimatedText from "./AnimatedText";
 
 const Section1 = () => {

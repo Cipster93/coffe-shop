@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import "../../styles/Section2.css";
+import "../../styles/HomePageStyles/Section2.css"
 
 const Section2 = () => {
   return (

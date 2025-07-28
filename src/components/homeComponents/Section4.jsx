@@ -1,11 +1,11 @@
 import React from "react";
 import { FaUtensils, FaStar } from "react-icons/fa";
-import "../../styles/Section4.css";
+import "../../styles/HomePageStyles/Section4.css"
 import { useNavigate } from "react-router-dom";
 
 const Section4 = () => {
   const navigate = useNavigate();
-   const handleMenuClick = () => {
+  const handleMenuClick = () => {
     navigate('/menu')
   }
   return (

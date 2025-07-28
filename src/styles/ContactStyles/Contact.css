@@ -1,0 +1,120 @@
+.contact-view {
+    max-width: 720px;
+    margin: 60px auto;
+    border-radius: 24px;
+    padding: 0px 32px;
+    color: #7b4f2b;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+.contact-view h2 {
+    color: #7b4f2b;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.contact-view .contact-info strong {
+    color: #f3ba91;
+}
+
+.contact-view .contact-info div {
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.contact-view .contact-info div>*:not(strong) {
+    color: white;
+}
+
+.contact-view .contact-info a {
+    color: white;
+    text-decoration: underline;
+}
+
+.contact-view form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.contact-view input,
+.contact-view textarea {
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #e7b98b;
+    background-color: #1a110d;
+    color: #7b4f2b;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+}
+
+.contact-view button {
+    background: linear-gradient(135deg, #e7b98b, #7b4f2b);
+    color: #1a110d;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 36px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: center;
+}
+
+.contact-view button:hover {
+    background: #f3cda9;
+}
+
+.contact-view .map-container {
+    margin-top: 40px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.contact-view iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+}
+
+.thank-you-message {
+    padding: 40px 20px;
+    text-align: center;
+    color: #f3ba91;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    animation: fadeInOut 5s forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+.faCoffe {
+    animation: float 3s ease-in-out infinite;
+}

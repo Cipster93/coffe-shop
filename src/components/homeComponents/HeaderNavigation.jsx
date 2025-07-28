@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/HeaderNavigation.css";
+import "../../styles/HeaderStyles/HeaderNavigation.css"
 import { FaCoffee } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
