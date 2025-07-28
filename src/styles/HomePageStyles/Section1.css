@@ -1,0 +1,53 @@
+.section1 {
+    display: flex;
+    width: 90vw;
+    height: 80vh;
+    align-items: flex-start;
+    font-size: 2rem;
+    color: white;
+    border: 1px solid white;
+    border-radius: 30px;
+    position: relative;
+    padding: 30px;
+    flex-direction: column;
+}
+
+.legend {
+    position: absolute;
+    top: -45px;
+    left: 60px;
+    background: black;
+    padding: 0 20px;
+    font-size: 3rem;
+    color: #f3ba91;
+    z-index: 2;
+}
+.legend-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    flex-direction: column;
+    font-family: 'Palatino', 'Book Antiqua', 'Georgia', serif;
+    font-style: italic; 
+    line-height: 1.4;
+    overflow-y: auto;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 610px) {
+    .section1 {
+        font-size: 1.6rem;
+    }
+    .legend {
+        font-size: 2rem;
+        top: -30px;
+    }
+    .legend-container {
+        font-size: 1.5rem;
+        justify-content: flex-start;
+    }
+}

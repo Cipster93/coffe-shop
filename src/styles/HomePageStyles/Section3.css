@@ -1,0 +1,119 @@
+.section3 {
+  width: 100%;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.testimonials-title {
+  font-size: 3rem;
+  color: #7b4f2b;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 80px;
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+}
+
+.testimonial-card {
+  padding: 25px;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
+}
+
+.testimonial-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.customer-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d4a373;
+  margin-bottom: 10px;
+}
+
+.customer-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #f3ba91;
+  text-align: center;
+}
+
+.testimonial-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-icon {
+  font-size: 1.5rem;
+  color: #d4a373;
+  margin-bottom: 10px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: white;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: #ccc;
+  transition: transform 0.3s ease;
+}
+
+.star.filled {
+  color: #d4a373;
+}
+
+.star.filled:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .testimonials-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .testimonial-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .testimonial-right {
+    align-items: center;
+  }
+
+  .testimonial-left {
+    margin-bottom: 20px;
+  }
+}
