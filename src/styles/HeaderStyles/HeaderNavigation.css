@@ -87,7 +87,7 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .header-navigation {
     gap: 2rem;
   }
@@ -95,12 +95,11 @@
   .hamburger-menu {
     display: flex;
     position: fixed;
-    top: 15px;
-    left: 3%;
-    z-index: 1001;
+    top: 15px;  
+    left: 15px; 
+    z-index: 1001; 
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
-    padding: 8px;
   }
 
   .navigation-container {

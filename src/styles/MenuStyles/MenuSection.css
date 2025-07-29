@@ -88,6 +88,7 @@
   .menu-container {
     flex-direction: column;
     height: auto;
+    width: 100%;
   }
 
   .menu-tabs {
