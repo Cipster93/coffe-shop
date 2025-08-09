@@ -121,9 +121,12 @@
   .section2-title {
     font-size: 3rem;
   }
+  .section2 {
+    gap: 20px
+  }
 
   .title-icon {
-    font-size: 3rem;
+    font-size: 0.7rem;
   }
 
   .coffeContainer {
@@ -134,11 +137,12 @@
   .imageWrapper {
     width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    border-radius: 10px;
   }
 
   .imageWrapper img {
     height: 100%;
+    border-radius: 10px;
   }
 
   .coffeDetails {
@@ -176,7 +180,7 @@
   }
 
   .title-icon {
-    font-size: 4rem;
+    font-size: 2rem;
 
   }
 
@@ -186,9 +190,9 @@
 
   .coffeContainer {
     width: 90%;
-    max-width: 900px;
-    gap: 20px;
+    /* max-width: 900px; */
     margin: 0 auto;
+    padding: 0px;
   }
 
   .coffeDetails {
