@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaCoffee } from 'react-icons/fa';
+import Lottie from 'lottie-react';
+import HourglassAnimation from '../../public/Hourglass Loading.json';
 import '../styles/ContactStyles/Contact.css';
 
 const ContactView = () => {
   const [stage, setStage] = useState('form');
+  const [animationCount, setAnimationCount] = useState(0);
   const navigate = useNavigate();
+  const lottieRef = useRef();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -16,18 +19,24 @@ const ContactView = () => {
     if (stage === 'message') {
       const timer1 = setTimeout(() => {
         setStage('coffee');
+        setAnimationCount(0);
       }, 2000);
-
       return () => clearTimeout(timer1);
     }
-    if (stage === 'coffee') {
+
+    if (stage === 'coffee' && animationCount >= 3) {
       const timer2 = setTimeout(() => {
         navigate('/menu');
-      }, 2000);
-
+      }, 500);
       return () => clearTimeout(timer2);
     }
-  }, [stage, navigate]);
+  }, [stage, animationCount, navigate]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStage('message');
+  };
+
 
   return (
     <div className="contact-view">
@@ -36,17 +45,17 @@ const ContactView = () => {
       {stage === 'form' && (
         <>
           <div className="contact-info">
-            <div><strong>Address:</strong> Str. Coffee nr. 10, București</div>
+            <div><strong>Address:</strong> Str. Coffee nr. 10</div>
             <div><strong>Phone:</strong> <a href="tel:+40712345678">+40 712 345 678</a></div>
             <div><strong>Email:</strong> <a href="mailto:contact@coffeeshop.ro">contact@coffeeshop.ro</a></div>
             <div><strong>Hours:</strong> Mon–Sun: 8:00 – 22:00</div>
           </div>
 
-          <form>
-            <input type="text" placeholder="Your Name" />
-            <input type="email" placeholder="Your Email" />
-            <textarea placeholder="Your Message" rows={5} />
-            <button type="submit" onClick={handleClick}>Send Message</button>
+          <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Your Message" rows={5} required />
+            <button type="submit">Send Message</button>
           </form>
 
           <div className="map-container">
@@ -60,19 +69,41 @@ const ContactView = () => {
       )}
 
       {stage === 'message' && (
-        <div className="thank-you-message" style={{ textAlign: 'center', fontSize: '1.5rem', color: '#e7b98b' }}>
+        <div
+          className="thank-you-message"
+          style={{
+            textAlign: 'center',
+            fontSize: '1.5rem',
+            color: '#e7b98b'
+          }}
+        >
           Thank you for your message,<br />shall we drink a coffee?
         </div>
       )}
 
       {stage === 'coffee' && (
-        <div style={{ textAlign: 'center', fontSize: '4rem', color: '#e7b98b', marginTop: '30px' }}>
-          <FaCoffee className='faCoffe' />
+        <div style={{ textAlign: 'center', marginTop: '30px' }}>
+          <Lottie
+            lottieRef={lottieRef}
+            animationData={HourglassAnimation}
+            style={{ width: '200px', height: '200px', margin: '0 auto' }}
+            loop={false}
+            autoplay={true}
+            onComplete={() => {
+              setAnimationCount(prev => {
+                const next = prev + 1;
+                if (next < 3) {
+                  // Repornește animația
+                  lottieRef.current?.goToAndPlay(0, true);
+                }
+                return next;
+              });
+            }}
+          />
         </div>
       )}
     </div>
   );
 };
-
 
 export default ContactView;
