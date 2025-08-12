@@ -1,8 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import HomeView from './pages/HomeView'
-import MenuView from './pages/MenuView'
-import ContactView from './pages/ContactView'
 import HeaderNavigation from './components/homeComponents/HeaderNavigation'
 import Lottie from 'lottie-react'
 import CoffeeAnimation from '../public/Coffee.json'
@@ -10,17 +7,23 @@ import PageWrapper from './components/PageWrapper'
 import './App.css'
 import ScrollToTop from './utils/ScrollToTop'
 
+const HomeView = lazy(() => import('./pages/HomeView'))
+const MenuView = lazy(() => import('./pages/MenuView'))
+const ContactView = lazy(() => import('./pages/ContactView'))
+
 function AppContent() {
   const location = useLocation()
 
   return (
     <>
       <HeaderNavigation />
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><HomeView /></PageWrapper>} />
-        <Route path="/menu" element={<PageWrapper><MenuView /></PageWrapper>} />
-        <Route path="/contact" element={<PageWrapper><ContactView /></PageWrapper>} />
-      </Routes>
+      <Suspense fallback={<div style={{ textAlign: 'center', marginTop: 50 }}>Loading...</div>}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageWrapper><HomeView /></PageWrapper>} />
+          <Route path="/menu" element={<PageWrapper><MenuView /></PageWrapper>} />
+          <Route path="/contact" element={<PageWrapper><ContactView /></PageWrapper>} />
+        </Routes>
+      </Suspense>
     </>
   )
 }

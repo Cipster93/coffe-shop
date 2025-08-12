@@ -37,7 +37,11 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    
 }
+.legend-container::-webkit-scrollbar {
+        display: none; 
+    }
 @media (max-width: 610px) {
     .section1 {
         font-size: 1.6rem;

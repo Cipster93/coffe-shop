@@ -2,7 +2,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ProductCard from "../components/Card";
 import menuData from "../data/products";
@@ -49,6 +48,39 @@ export default function MenuView() {
     setValue(newValue);
   };
 
+  // Memorăm listele de carduri o singură dată folosind useMemo,
+  // pentru a evita refacerea lor inutilă la fiecare render.
+  // Array-ul gol [] semnifică că datele nu se schimbă, deci memo-ul rămâne valid.
+  const coffeeCards = React.useMemo(() =>
+    menuData.coffeeDrinks.map((product, index) => (
+      <ProductCard key={index} product={product} />
+    )), []
+  );
+
+  const teaCards = React.useMemo(() =>
+    menuData.teaInfusions.map((product, index) => (
+      <ProductCard key={index} product={product} />
+    )), []
+  );
+
+  const coldDrinksCards = React.useMemo(() =>
+    menuData.coldDrinks.map((product, index) => (
+      <ProductCard key={index} product={product} />
+    )), []
+  );
+
+  const cakesCards = React.useMemo(() =>
+    menuData.cakesPastries.map((product, index) => (
+      <ProductCard key={index} product={product} />
+    )), []
+  );
+
+  const snacksCards = React.useMemo(() =>
+    menuData.lightSnacks.map((product, index) => (
+      <ProductCard key={index} product={product} />
+    )), []
+  );
+
   return (
     <Box className="menu-container">
       <Tabs
@@ -67,43 +99,23 @@ export default function MenuView() {
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        <div className="products-grid">
-          {menuData.coffeeDrinks.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
+        <div className="products-grid">{coffeeCards}</div>
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <div className="products-grid">
-          {menuData.teaInfusions.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
+        <div className="products-grid">{teaCards}</div>
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        <div className="products-grid">
-          {menuData.coldDrinks.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
+        <div className="products-grid">{coldDrinksCards}</div>
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <div className="products-grid">
-          {menuData.cakesPastries.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
+        <div className="products-grid">{cakesCards}</div>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
-        <div className="products-grid">
-          {menuData.lightSnacks.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
+        <div className="products-grid">{snacksCards}</div>
       </TabPanel>
     </Box>
   );
